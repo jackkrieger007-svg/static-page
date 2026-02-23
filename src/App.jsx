@@ -8,6 +8,7 @@ import BiodataPDF from "./pdf_layout.jsx";
 export default function App() {
   const [selectedDesktopImage, setSelectedDesktopImage] = useState(0);
   const [mobileModalImage, setMobileModalImage] = useState(null);
+  // const [showPreview, setShowPreview] = useState(false);
 
   const galleryImages = [
     { src: "./formal.jpg", alt: "Formal" },
@@ -66,20 +67,28 @@ export default function App() {
                 {biodata.name}
               </h1>
 
-              <PDFDownloadLink
-                document={<BiodataPDF biodata={biodata} />}
-                fileName="Dipen-Biodata.pdf"
-                className="px-3 py-2 border rounded-md flex gap-2 items-center whitespace-nowrap"
-              >
-                {({ loading }) =>
-                  loading ? "Generating PDF..." : (
-                    <>
-                      <Download size={14} />
-                      Download
-                    </>
-                  )
-                }
-              </PDFDownloadLink>
+              {/* <div className="flex gap-2">
+                <button
+                  onClick={() => setShowPreview(true)}
+                  className="px-3 py-2 border rounded-md flex gap-2 items-center whitespace-nowrap hover:bg-gray-50"
+                >
+                  👁️ Preview
+                </button> */}
+                <PDFDownloadLink
+                  document={<BiodataPDF biodata={biodata} />}
+                  fileName="Dipen-Biodata.pdf"
+                  className="px-3 py-2 border rounded-md flex gap-2 items-center whitespace-nowrap"
+                >
+                  {({ loading }) =>
+                    loading ? "Generating PDF..." : (
+                      <>
+                        <Download size={14} />
+                        Download
+                      </>
+                    )
+                  }
+                </PDFDownloadLink>
+              {/* </div> */}
             </div>
 
               <p className="text-gray-600 mb-6">Software Engineer</p>
@@ -229,6 +238,36 @@ export default function App() {
 
         </motion.div>
       </div>
+
+      {/* -------------------- PDF PREVIEW MODAL -------------------- */}
+      {/* {showPreview && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowPreview(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.92 }}
+            animate={{ scale: 1 }}
+            className="relative w-full h-[90vh] bg-white rounded-lg overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="font-semibold">PDF Preview</h3>
+              <button
+                className="p-2 hover:bg-gray-100 rounded"
+                onClick={() => setShowPreview(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <PDFViewer style={{ flex: 1 }}>
+              <BiodataPDF biodata={biodata} />
+            </PDFViewer>
+          </motion.div>
+        </motion.div>
+      )} */}
 
       {/* -------------------- MOBILE FULLSCREEN MODAL -------------------- */}
       {mobileModalImage !== null && (

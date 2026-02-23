@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     marginTop: 20,
-    marginBottom: 10,
+    marginBottom: 5,
     borderBottom: "1px solid #999",
     paddingBottom: 4,
   },
@@ -75,7 +75,6 @@ export default function BiodataPDF({ biodata }) {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "flex-start",
-            marginBottom: 20,
           }}
         >
           {/* LEFT SIDE: NAME + TITLE + PERSONAL INFO */}
@@ -203,19 +202,16 @@ export default function BiodataPDF({ biodata }) {
         </View> 
 
          {/* GOOGLE DRIVE LINK */}
-        <Text style={styles.sectionTitle}>More Photos</Text>
         <Link
           src="https://drive.google.com/drive/folders/1dK9czUu06W5V1DqlhZhRLMLNPzeEhejO"
-          style={styles.link}
         >
-          View Google Drive Album
+          More Photos
         </Link>
-        <Text style={styles.sectionTitle}>Website</Text>
+        <Text>  </Text>
         <Link
-          src="https://jackkrieger007-svg.github.io/biodata/"
-          style={styles.link}
+          src="https://jackkrieger007-svg.github.io/static-page/"
         >
-         https://jackkrieger007-svg.github.io/biodata/
+          Website
         </Link>
       </Page>
     </Document>
